@@ -111,6 +111,7 @@ const translations = {
         
         // Navbar extra
         farmingCalendarNav: "Farming Calendar",
+        marketPrices: "Market Prices",
         profileNav: "Profile",
         
         // Calendar page
@@ -251,6 +252,7 @@ const translations = {
         
         // Navbar extra
         farmingCalendarNav: "खेती कैलेंडर",
+        marketPrices: "बाजार मूल्य",
         profileNav: "प्रोफाइल",
         
         // Calendar page
@@ -391,6 +393,7 @@ const translations = {
         
         // Navbar extra
         farmingCalendarNav: "ਖੇਤੀ ਕੈਲੰਡਰ",
+        marketPrices: "ਬਾਜ਼ਾਰ ਮੁੱਲ",
         profileNav: "ਪ੍ਰੋਫਾਈਲ",
         
         // Calendar page
@@ -531,6 +534,7 @@ const translations = {
         
         // Navbar extra
         farmingCalendarNav: "खेती के कैलेन्डर",
+        marketPrices: "बाजार मूल्य",
         profileNav: "प्रोफाइल",
         
         // Calendar page
@@ -671,6 +675,7 @@ const translations = {
         
         // Navbar extra
         farmingCalendarNav: "விவசாய காலண்டர்",
+        marketPrices: "சந்தை விலைகள்",
         profileNav: "சுயவிவரம்",
         
         // Calendar page
@@ -811,6 +816,7 @@ const translations = {
         
         // Navbar extra
         farmingCalendarNav: "কৃষি ক্যালেন্ডার",
+        marketPrices: "বাজার মূল্য",
         profileNav: "প্রোফাইল",
         
         // Calendar page
