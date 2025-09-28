@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Analysis - KrishiSetu</title>
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="soil-analysis-container">
+        <!-- Header -->
+        <div class="analysis-header">
+            <h2 data-translate="soilAnalysis">Soil Analysis</h2>
+            <p data-translate="soilAnalysisDesc">Comprehensive soil health assessment for your farm</p>
+        </div>
+
+        <!-- Upload Section -->
+        <div class="upload-section">
+            <div class="upload-card">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3 data-translate="uploadSoilSample">Upload Soil Sample Image</h3>
+                <p data-translate="uploadDesc">Take a photo of your soil sample or upload an existing image</p>
+                <div class="upload-buttons">
+                    <button class="btn btn-primary" onclick="openCamera()">
+                        <i class="fas fa-camera"></i>
+                        <span data-translate="takePhoto">Take Photo</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="uploadImage()">
+                        <i class="fas fa-upload"></i>
+                        <span data-translate="uploadImage">Upload Image</span>
+                    </button>
+                </div>
+                <input type="file" id="soilImageInput" accept="image/*" style="display: none;">
+            </div>
+        </div>
+
+        <!-- Analysis Results -->
+        <div id="analysisResults" class="analysis-results">
+            <div class="results-header">
+                <h3 data-translate="analysisResults">Analysis Results</h3>
+                <div class="analysis-status">
+                    <i class="fas fa-check-circle"></i>
+                    <span data-translate="analysisComplete">Analysis Complete</span>
+                </div>
+            </div>
+
+            <!-- Soil Metrics -->
+            <div class="soil-metrics">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-tint" style="color: #2196F3;"></i>
+                    </div>
+                    <div class="metric-info">
+                        <div class="metric-label" data-translate="phLevel">pH Level</div>
+                        <div class="metric-value">6.8</div>
+                        <div class="metric-status good">Optimal</div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-leaf" style="color: #4CAF50;"></i>
+                    </div>
+                    <div class="metric-info">
+                        <div class="metric-label" data-translate="nitrogen">Nitrogen (N)</div>
+                        <div class="metric-value">45 ppm</div>
+                        <div class="metric-status medium">Medium</div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-fire" style="color: #FF9800;"></i>
+                    </div>
+                    <div class="metric-info">
+                        <div class="metric-label" data-translate="phosphorus">Phosphorus (P)</div>
+                        <div class="metric-value">23 ppm</div>
+                        <div class="metric-status low">Low</div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-star" style="color: #9C27B0;"></i>
+                    </div>
+                    <div class="metric-info">
+                        <div class="metric-label" data-translate="potassium">Potassium (K)</div>
+                        <div class="metric-value">112 ppm</div>
+                        <div class="metric-status good">High</div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-thermometer-half" style="color: #FF5722;"></i>
+                    </div>
+                    <div class="metric-info">
+                        <div class="metric-label" data-translate="organicMatter">Organic Matter</div>
+                        <div class="metric-value">3.2%</div>
+                        <div class="metric-status good">Good</div>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-water" style="color: #00BCD4;"></i>
+                    </div>
+                    <div class="metric-info">
+                        <div class="metric-label" data-translate="moisture">Moisture</div>
+                        <div class="metric-value">18%</div>
+                        <div class="metric-status medium">Adequate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soil Type -->
+            <div class="soil-type-section">
+                <h4 data-translate="soilType">Soil Type</h4>
+                <div class="soil-type-card">
+                    <div class="soil-sample">
+                        <div class="soil-color" style="background: linear-gradient(45deg, #8B4513, #A0522D);"></div>
+                    </div>
+                    <div class="soil-info">
+                        <h5>Clay Loam</h5>
+                        <p data-translate="clayLoamDesc">Well-balanced soil with good water retention and nutrient capacity. Suitable for most crops.</p>
+                        <div class="soil-composition">
+                            <div class="composition-item">
+                                <span>Clay: 35%</span>
+                                <div class="composition-bar">
+                                    <div class="composition-fill" style="width: 35%; background: #8B4513;"></div>
+                                </div>
+                            </div>
+                            <div class="composition-item">
+                                <span>Sand: 40%</span>
+                                <div class="composition-bar">
+                                    <div class="composition-fill" style="width: 40%; background: #F4A460;"></div>
+                                </div>
+                            </div>
+                            <div class="composition-item">
+                                <span>Silt: 25%</span>
+                                <div class="composition-bar">
+                                    <div class="composition-fill" style="width: 25%; background: #D2B48C;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="recommendations-section">
+                <h4 data-translate="recommendations">Recommendations</h4>
+                <div class="recommendation-cards">
+                    <div class="recommendation-card priority-high">
+                        <div class="recommendation-header">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span data-translate="highPriority">High Priority</span>
+                        </div>
+                        <h5 data-translate="addPhosphorus">Add Phosphorus Fertilizer</h5>
+                        <p data-translate="phosphorusRec">Your soil has low phosphorus levels. Apply 20-25 kg/acre of DAP (Di-Ammonium Phosphate) before next planting.</p>
+                        <div class="recommendation-action">
+                            <button class="btn btn-sm btn-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span data-translate="buyNow">Buy Now</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="recommendation-card priority-medium">
+                        <div class="recommendation-header">
+                            <i class="fas fa-info-circle"></i>
+                            <span data-translate="mediumPriority">Medium Priority</span>
+                        </div>
+                        <h5 data-translate="improveNitrogen">Improve Nitrogen Levels</h5>
+                        <p data-translate="nitrogenRec">Consider adding organic compost or urea fertilizer to boost nitrogen content for better crop growth.</p>
+                        <div class="recommendation-action">
+                            <button class="btn btn-sm btn-secondary">
+                                <i class="fas fa-info"></i>
+                                <span data-translate="learnMore">Learn More</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="recommendation-card priority-low">
+                        <div class="recommendation-header">
+                            <i class="fas fa-thumbs-up"></i>
+                            <span data-translate="goodStatus">Good Status</span>
+                        </div>
+                        <h5 data-translate="maintainPh">Maintain pH Balance</h5>
+                        <p data-translate="phRec">Your soil pH is optimal for most crops. Continue current practices to maintain this balance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Suitable Crops -->
+            <div class="suitable-crops-section">
+                <h4 data-translate="suitableCrops">Suitable Crops for Your Soil</h4>
+                <div class="crops-grid">
+                    <div class="crop-card recommended">
+                        <div class="crop-icon">🌾</div>
+                        <div class="crop-name">Wheat</div>
+                        <div class="crop-suitability">
+                            <span data-translate="highlyRecommended">Highly Recommended</span>
+                        </div>
+                        <div class="crop-yield">Expected Yield: 45-50 Q/acre</div>
+                    </div>
+
+                    <div class="crop-card recommended">
+                        <div class="crop-icon">🌽</div>
+                        <div class="crop-name">Corn</div>
+                        <div class="crop-suitability">
+                            <span data-translate="recommended">Recommended</span>
+                        </div>
+                        <div class="crop-yield">Expected Yield: 60-65 Q/acre</div>
+                    </div>
+
+                    <div class="crop-card suitable">
+                        <div class="crop-icon">🍅</div>
+                        <div class="crop-name">Tomato</div>
+                        <div class="crop-suitability">
+                            <span data-translate="suitable">Suitable</span>
+                        </div>
+                        <div class="crop-yield">Expected Yield: 400-450 Q/acre</div>
+                    </div>
+
+                    <div class="crop-card suitable">
+                        <div class="crop-icon">🥔</div>
+                        <div class="crop-name">Potato</div>
+                        <div class="crop-suitability">
+                            <span data-translate="suitable">Suitable</span>
+                        </div>
+                        <div class="crop-yield">Expected Yield: 200-250 Q/acre</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historical Data -->
+            <div class="historical-section">
+                <h4 data-translate="soilHistory">Soil Health History</h4>
+                <div class="history-chart">
+                    <canvas id="soilChart" width="400" height="200"></canvas>
+                </div>
+                <div class="history-summary">
+                    <div class="history-item">
+                        <div class="history-date">Jan 2024</div>
+                        <div class="history-status">pH: 6.5, N: 42ppm, P: 18ppm</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-date">Mar 2024</div>
+                        <div class="history-status">pH: 6.7, N: 44ppm, P: 20ppm</div>
+                    </div>
+                    <div class="history-item current">
+                        <div class="history-date">Sep 2024</div>
+                        <div class="history-status">pH: 6.8, N: 45ppm, P: 23ppm</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="downloadReport()">
+                    <i class="fas fa-download"></i>
+                    <span data-translate="downloadReport">Download Report</span>
+                </button>
+                <button class="btn btn-secondary" onclick="scheduleRetesting()">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span data-translate="scheduleRetest">Schedule Retest</span>
+                </button>
+                <button class="btn btn-outline" onclick="shareReport()">
+                    <i class="fas fa-share"></i>
+                    <span data-translate="shareReport">Share Report</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script>
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show analysis results immediately for demo
+            document.getElementById('analysisResults').style.display = 'block';
+            
+            // Simulate chart rendering
+            setTimeout(() => {
+                renderSoilChart();
+            }, 1000);
+        });
+
+        // Dummy functions for demo
+        function openCamera() {
+            alert('Opening camera for soil sample photo...');
+            // Simulate analysis after photo
+            setTimeout(() => {
+                document.getElementById('analysisResults').style.display = 'block';
+            }, 2000);
+        }
+
+        function uploadImage() {
+            document.getElementById('soilImageInput').click();
+        }
+
+        function downloadReport() {
+            alert('Downloading soil analysis report...');
+        }
+
+        function scheduleRetesting() {
+            alert('Scheduling soil retest...');
+        }
+
+        function shareReport() {
+            alert('Sharing soil analysis report...');
+        }
+
+        function renderSoilChart() {
+            const canvas = document.getElementById('soilChart');
+            const ctx = canvas.getContext('2d');
+            
+            // Simple chart rendering
+            ctx.fillStyle = '#4CAF50';
+            ctx.fillRect(50, 150, 30, -50);
+            ctx.fillStyle = '#FF9800';
+            ctx.fillRect(100, 150, 30, -30);
+            ctx.fillStyle = '#2196F3';
+            ctx.fillRect(150, 150, 30, -70);
+            ctx.fillStyle = '#9C27B0';
+            ctx.fillRect(200, 150, 30, -90);
+            
+            // Labels
+            ctx.fillStyle = '#333';
+            ctx.font = '12px Arial';
+            ctx.fillText('pH', 55, 170);
+            ctx.fillText('N', 107, 170);
+            ctx.fillText('P', 157, 170);
+            ctx.fillText('K', 207, 170);
+        }
+
+        // File input handler
+        document.getElementById('soilImageInput').addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                alert('Analyzing uploaded soil image...');
+                setTimeout(() => {
+                    document.getElementById('analysisResults').style.display = 'block';
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

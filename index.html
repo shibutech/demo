@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrishiSetu - Where Farmers Efforts Meet Everyone's Progress</title>
+    <meta name="description" content="Smart Crop Advisory System for Small and Marginal Farmers">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%234CAF50' d='M50 10c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zm0 70c-16.569 0-30-13.431-30-30s13.431-30 30-30 30 13.431 30 30-13.431 30-30 30z'/%3E%3Cpath fill='%234CAF50' d='M50 25c-13.807 0-25 11.193-25 25s11.193 25 25 25 25-11.193 25-25-11.193-25-25-25zm0 40c-8.284 0-15-6.716-15-15s6.716-15 15-15 15 6.716 15 15-6.716 15-15 15z'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Language Selection Screen -->
+    <div id="languageScreen" class="screen active">
+        <div class="container">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h1 class="app-title">KrishiSetu</h1>
+                <p class="tagline" data-translate="tagline">Where Farmers Efforts Meet Everyone's Progress</p>
+            </div>
+            
+            <div class="language-selection">
+                <h2 data-translate="selectLanguage">Select Your Language / अपनी भाषा चुनें</h2>
+                <div class="language-grid">
+                    <button class="language-btn" onclick="selectLanguage('en')">
+                        <i class="fas fa-globe"></i>
+                        <span>English</span>
+                    </button>
+                    <button class="language-btn" onclick="selectLanguage('hi')">
+                        <i class="fas fa-om"></i>
+                        <span>हिन्दी</span>
+                    </button>
+                    <button class="language-btn" onclick="selectLanguage('pa')">
+                        <i class="fas fa-hands-praying"></i>
+                        <span>ਪੰਜਾਬੀ</span>
+                    </button>
+                    <button class="language-btn" onclick="selectLanguage('cg')">
+                        <i class="fas fa-leaf"></i>
+                        <span>छत्तीसगढ़ी</span>
+                    </button>
+                    <button class="language-btn" onclick="selectLanguage('ta')">
+                        <i class="fas fa-temple-hindu"></i>
+                        <span>தமிழ்</span>
+                    </button>
+                    <button class="language-btn" onclick="selectLanguage('bn')">
+                        <i class="fas fa-fish"></i>
+                        <span>বাংলা</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Signup Screen -->
+    <div id="authScreen" class="screen">
+        <div class="container">
+            <div class="auth-header">
+                <button class="back-btn" onclick="showLanguageScreen()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div class="logo">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h1>KrishiSetu</h1>
+            </div>
+            
+            <div class="auth-options">
+                <h2 data-translate="welcomeBack">Welcome Back</h2>
+                <p data-translate="authDescription">Join thousands of farmers improving their crop yields</p>
+                
+                <div class="auth-buttons">
+                    <button class="btn btn-primary" onclick="showLoginForm()">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span data-translate="login">Login</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="showSignupForm()">
+                        <i class="fas fa-user-plus"></i>
+                        <span data-translate="signup">Sign Up</span>
+                    </button>
+                    <button class="btn btn-outline" onclick="continueWithoutLogin()">
+                        <i class="fas fa-user-secret"></i>
+                        <span data-translate="continueWithoutLogin">Continue without Login</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" class="screen">
+        <div class="container">
+            <div class="auth-header">
+                <button class="back-btn" onclick="showAuthScreen()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2 data-translate="login">Login</h2>
+            </div>
+            
+            <form class="auth-form" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label data-translate="phoneNumber">Phone Number</label>
+                    <input type="tel" id="loginPhone" required placeholder="+91 9876543210">
+                </div>
+                <div class="form-group">
+                    <label data-translate="password">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary full-width">
+                    <span data-translate="login">Login</span>
+                </button>
+                <p class="auth-link">
+                    <span data-translate="dontHaveAccount">Don't have an account?</span>
+                    <a href="#" onclick="showSignupForm()" data-translate="signup">Sign Up</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signupForm" class="screen">
+        <div class="container">
+            <div class="auth-header">
+                <button class="back-btn" onclick="showAuthScreen()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2 data-translate="signup">Sign Up</h2>
+            </div>
+            
+            <form class="auth-form" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label data-translate="fullName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label data-translate="phoneNumber">Phone Number</label>
+                    <input type="tel" id="signupPhone" required placeholder="+91 9876543210">
+                </div>
+                <div class="form-group">
+                    <label data-translate="farmSize">Farm Size (in acres)</label>
+                    <input type="number" id="farmSize" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label data-translate="location">Location</label>
+                    <input type="text" id="location" required>
+                </div>
+                <div class="form-group">
+                    <label data-translate="password">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary full-width">
+                    <span data-translate="signup">Sign Up</span>
+                </button>
+                <p class="auth-link">
+                    <span data-translate="alreadyHaveAccount">Already have an account?</span>
+                    <a href="#" onclick="showLoginForm()" data-translate="login">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- By-Product Income Maximizer Prototype -->
+    <div id="byProductMaximizer" class="screen">
+        <div class="container">
+            <h2>By-Product Income Maximizer</h2>
+            <p>Identify income opportunities from agricultural by-products.</p>
+
+            <!-- Input Section -->
+            <div class="form-group">
+                <label for="cropInput">Select Crop/Livestock:</label>
+                <select id="cropInput">
+                    <option value="wheat">Wheat</option>
+                    <option value="sugarcane">Sugarcane</option>
+                    <option value="cow">Cow</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" onclick="getByProductOpportunities()">Get Opportunities</button>
+
+            <!-- Results Section -->
+            <div id="results" class="results-section" style="display: none;">
+                <h3>Opportunities</h3>
+                <ul id="opportunitiesList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js')
+                    .then(function(registration) {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        function getByProductOpportunities() {
+            const crop = document.getElementById('cropInput').value;
+            const resultsSection = document.getElementById('results');
+            const opportunitiesList = document.getElementById('opportunitiesList');
+
+            // Clear previous results
+            opportunitiesList.innerHTML = '';
+
+            // Example data for by-products
+            const byProducts = {
+                wheat: [
+                    'Wheat husk → Paper industry',
+                    'Wheat bran → Animal feed'
+                ],
+                sugarcane: [
+                    'Sugarcane bagasse → Biofuel',
+                    'Molasses → Alcohol production'
+                ],
+                cow: [
+                    'Cow dung → Organic fertilizer packs',
+                    'Cow urine → Ayurvedic medicines'
+                ]
+            };
+
+            // Display opportunities
+            if (byProducts[crop]) {
+                byProducts[crop].forEach(opportunity => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = opportunity;
+                    opportunitiesList.appendChild(listItem);
+                });
+            } else {
+                const listItem = document.createElement('li');
+                listItem.textContent = 'No opportunities found.';
+                opportunitiesList.appendChild(listItem);
+            }
+
+            resultsSection.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
